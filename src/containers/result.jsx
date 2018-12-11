@@ -5,11 +5,11 @@ import { connect } from 'react-redux'
 class Result extends Component {
   response = () => {
     if(this.props.solved && this.props.path) {
-      return <p>Shortest path takes <div className='red-flag'><div>{this.props.path}</div></div> steps (calculation time: <div className='red-flag'><div>{this.props.duration}</div></div> ms). Click on the UNSOLVE MAZE button if you want to change it!</p>
+      return <p>Shortest path: <div className='red-flag'><div>{this.props.path}</div></div> steps (calculation time: <div className='red-flag'><div>{this.props.duration}</div></div> ms). Click on the UNSOLVE MAZE button if you want to modify it.</p>
     } else if (this.props.solved && !this.props.path) {
-      return <p>This maze can not be solved (calculation time: <div className='red-flag'><div>{this.props.duration}</div></div> ms)</p>
+      return <p>This maze can not be solved (calculation time: <div className='red-flag'><div>{this.props.duration}</div></div> ms).</p>
     } else {
-      return <p>Draw your maze and hit the SOLVE MAZE button to display the shortest path!</p>
+      return <p>Draw your maze then hit the SOLVE MAZE button to display the shortest path!</p>
     }
   }
 

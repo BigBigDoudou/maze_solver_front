@@ -35,8 +35,8 @@ const initialState = {
   cells: '',
   start: false,
   exit: false,
-  width: 12,
-  height: 8,
+  width: 13,
+  height: 9,
   solved: false,
   path: null,
   duration: null

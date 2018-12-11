@@ -7,7 +7,7 @@ import { addColumn } from '../actions'
 class AddColumn extends Component {
   addColumn = () => {
     if (this.props.width < 20) {
-      this.props.addColumn(this.props.width, this.props.height, this.props.cells)
+      this.props.addColumn(this.props.width, this.props.cells)
     }
   }
 

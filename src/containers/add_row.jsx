@@ -7,7 +7,7 @@ import { addRow } from '../actions'
 class AddRow extends Component {
   addRow = () => {
     if (this.props.height < 20) {
-      this.props.addRow(this.props.width, this.props.height)
+      this.props.addRow(this.props.width)
     }
   }
 

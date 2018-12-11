@@ -34,41 +34,37 @@ export default function(state, action) {
     }
     case CHANGE_START: {
       return [
-        ...state.slice(0, action.number),
+        ...state.slice(0, action.payload),
         'P',
-        ...state.slice(action.number + 1)
+        ...state.slice(action.payload + 1)
       ].join('')
     }
     case SET_START: {
       return [
-        ...state.slice(0, action.number),
+        ...state.slice(0, action.payload),
         'S',
-        ...state.slice(action.number + 1)
+        ...state.slice(action.payload + 1)
       ].join('')
     }
     case CHANGE_EXIT: {
       return [
-        ...state.slice(0, action.number),
+        ...state.slice(0, action.payload),
         'P',
-        ...state.slice(action.number + 1)
+        ...state.slice(action.payload + 1)
       ].join('')
     }
     case SET_EXIT: {
       return [
-        ...state.slice(0, action.number),
+        ...state.slice(0, action.payload),
         'E',
-        ...state.slice(action.number + 1)
+        ...state.slice(action.payload + 1)
       ].join('')
     }
     case ADD_COLUMN: {
       return action.payload
     }
     case ADD_ROW: {
-      return [
-        ...state.slice(0, action.number),
-        action.row,
-        ...state.slice(action.number)
-      ].join('')
+      return state + action.payload
     }
     case ROTATE: {
       return action.payload

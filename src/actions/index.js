@@ -30,7 +30,7 @@ export function activateServer() {
 
 export function setCells(width, height) {
   let cells = ''
-  const middleHeight = Math.round(height / 2)
+  const middleHeight = Math.round(height / 2) - 1
   for (let y = 0; y <= height - 1; y++) {
       for (let x = 0; x <= width - 1; x++) {
         let character = null
@@ -61,28 +61,28 @@ export function updateCell(x, y, width, character) {
 export function changeStart(x, y, width) {
   return {
     type: CHANGE_START,
-    number: y * width + x
+    payload: y * width + x
   }
 }
 
 export function setStart(x, y, width) {
   return {
     type: SET_START,
-    number: y * width + x
+    payload: y * width + x
   }
 }
 
 export function changeExit(x, y, width) {
   return {
     type: CHANGE_EXIT,
-    number: y * width + x
+    payload: y * width + x
   }
 }
 
 export function setExit(x, y, width) {
   return {
     type: SET_EXIT,
-    number: y * width + x
+    payload: y * width + x
   }
 }
 
@@ -104,13 +104,13 @@ export function solveMaze(maze) {
   }
 }
 
-export function addColumn(width, height, cells) {
+export function addColumn(width, cells) {
   let cells_after = ''
   for (let i = 0; i <= cells.length - 1; i++) {
+    cells_after += cells[i]
     if ((i + 1) % width === 0) {
       cells_after += 'W'
     }
-    cells_after += cells[i]
   }
   return {
     type: ADD_COLUMN,
@@ -118,16 +118,14 @@ export function addColumn(width, height, cells) {
   }
 }
 
-export function addRow(width, height) {
-  const number = (height - 1) * width
+export function addRow(width) {
   let row = ''
   for (let x = 0; x <= width - 1; x++) {
     row += 'W'
   }
   return {
     type: ADD_ROW,
-    row: row,
-    number: number
+    payload: row
   }
 }
 
@@ -180,9 +178,3 @@ export function reset(width, height) {
     payload: cells
   }
 }
-
-// height 4 / width 5
-// ABCDE
-// FGHIJ
-// KLMNO
-// PQRST
