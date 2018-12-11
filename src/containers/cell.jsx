@@ -16,13 +16,13 @@ class Cell extends Component {
   updateCell = () => {
     const cell = this.cell()
     const x = this.props.x, y = this.props.y, width = this.props.width
-    if (this.props.start && cell !== 'E') {
+    if (this.props.start && cell != 'E') {
       this.props.setStart(x, y, width)
-    } else if (this.props.exit && cell !== 'S') {
+    } else if (this.props.exit && cell != 'S') {
       this.props.setExit(x, y, width)
-    } else if (cell === 'S') {
+    } else if (cell === 'S' && !this.props.exit) {
       this.props.changeStart(x, y, width)
-    } else if (cell === 'E') {
+    } else if (cell === 'E' && !this.props.start) {
       this.props.changeExit(x, y, width)
     } else if (cell === 'W') {
       this.props.updateCell(x, y, width, 'P')
@@ -36,10 +36,10 @@ class Cell extends Component {
   render () {
     return(
       <div
-        className={`cell cell-${this.cell()}`}
+        className={`cell cell-${this.cell()}${this.props.start && this.cell() != 'E' ? ' cell-start-free' : ''}${this.props.exit && this.cell() != 'S' ? ' cell-exit-free' : ''}`}
         onClick={this.updateCell}
       >
-      <div className='path'></div>
+        <div className='path'></div>
       </div>
     )
   }

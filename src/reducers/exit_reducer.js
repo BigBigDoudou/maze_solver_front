@@ -1,4 +1,5 @@
 import { CHANGE_EXIT } from '../actions'
+import { RESET } from '../actions'
 import { SET_EXIT } from '../actions'
 
 export default function(state, action) {
@@ -11,6 +12,9 @@ export default function(state, action) {
       return true
     }
     case SET_EXIT: {
+      return false
+    }
+    case RESET: {
       return false
     }
     default: {

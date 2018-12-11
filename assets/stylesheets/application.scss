@@ -3,64 +3,84 @@ $red: #E15554;
 $purple: #9D8DF1;
 $green: #1CFEBA;
 $blue: #429EA6;
-$gray: #CCC;
-$light-gray: #EEE;
-
+$gray: #AAA;
+$dark-gray: #555;
+$background: #515666;
 
 body {
   font-family: Helvetica;
-  background-color: $light-gray;
+  background-color: $background;
   margin: 0;
   padding: 0;
   box-sizing: content-box;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    color: white;
+  }
 }
 
 #root {
   height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
 }
 
-// SERVER
+// RULES
 
-.server {
-  display: flex;
-  justify-content: flex-end;
+#rules {
+  margin: 2% 8%;
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 2px;
+  }
+  p {
+    font-size: 20px;
+    padding: 2px;
+  }
 }
 
-.server-icon {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+.white, .red, .blue, .green, .gray, .purple {
+  font-weight: bold;
 }
 
-.server-icon-false {
-  background-color: $red;
+.white {
+  color: white;
 }
 
-.server-icon-true {
-  background-color: $dark-green;
-}
-
-.server-text {
-  height: 12px;
-  font-size: 10px;
-  margin-left: 8px;
-  text-transform: uppercase;
-}
-
-.server-text-true {
-  color: $dark-green;
-}
-
-.server-text-false {
+.red {
   color: $red;
+}
+
+.blue {
+  color: $blue;
+}
+
+.green {
+  color: $green;
+}
+
+.gray {
+  color: $gray;
+}
+
+.purple {
+  color: $purple;
+}
+
+// GAME
+
+#game {
+  min-width: 1400px;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 8%;
 }
 
 // CELL
 
-.cells-container {
+#maze {
+  margin-top: 2px;
   display: grid;
   grid-gap: 2px;
 }
@@ -69,17 +89,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: auto;
-  height: auto;
-  border: solid 2px transparent;
   cursor: cell;
   &:hover {
     opacity: 0.5;
-    border-color: $red;
   }
 }
-
-.cell-coordinates {}
 
 .cell-P {
   background-color: white;
@@ -106,32 +120,158 @@ body {
 .cell-X {
   background-color: white;
   .path {
-    background-color: $blue;
+    background-color: $red;
   }
+}
+
+.cell-start-free {
+  outline: dashed 3px $purple;
+  outline-offset: -6px;
+}
+
+.cell-exit-free {
+  outline: dashed 3px $green;
+  outline-offset: -6px;
 }
 
 // BUTTON
 
-.actions {
+#actions {
+  width: 20%;
   display: flex;
-  justify-content: center;
-  padding: 16px;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: 16px;
 }
 
 .btn {
-  border: none;
-  background-color: $blue;
+  // flex: 1;
   color: white;
   border-radius: 0;
-  margin: 16px;
-  padding: 8px 16px;
-  &:hover {
-    background-color: darken($blue, 10%);
+  padding: 10px 16px;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  opacity: 0.8;
+  margin: 2px;
+  font-size: 16px;
+  font-weight: bold;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  &:visited {
+    opacity: 0.8;
     color: white;
+  }
+  &:hover {
+    opacity: 1;
+    color: white;
+  }
+  &:active {
+    opacity: 0.8;
+    color: white;
+  }
+  &:focus {
+    opacity: 0.8;
+    color: white;
+  }
+}
+
+.btn-helper {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.btn-solve,
+.btn-unsolve {
+  background-color: $red;
+  &:hover {
+    background-color: darken($red, 5%);
+  }
+}
+
+.btn-column,
+.btn-row,
+.btn-rotate,
+.btn-fill,
+.btn-empty {
+  background-color: $blue;
+  &:hover {
+    background-color: darken($blue, 5%);
+  }
+}
+
+.btn-reset {
+  background-color: $gray;
+  &:hover {
+    background-color: darken($gray, 5%);
   }
 }
 
 .btn-disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+// SERVER
+
+.server {
+  margin: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.server-icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.server-icon-false {
+  background-color: $red;
+}
+
+.server-icon-true {
+  background-color: $dark-green;
+}
+
+.server-text {
+  font-size: 10px;
+  margin-left: 8px;
+  text-transform: uppercase;
+}
+
+.server-text-true {
+  color: $dark-green;
+}
+
+.server-text-false {
+  color: $red;
+}
+
+// RESULT
+
+#result {
+  padding-left: 8%;
+  margin-bottom: 8px;
+  margin-left: 2px;
+  display: inline-block;
+  height: 60px;
+  p {
+    font-size: 18px;
+    padding: 16px 24px;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.red-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  div {
+    padding: 0 4px;
+    color: $red;
+  }
 }

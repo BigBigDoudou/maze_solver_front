@@ -6,7 +6,7 @@ import reduxPromise from 'redux-promise'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import '../assets/stylesheets/application.scss'
 
-import Maze from './containers/maze'
+import App from './containers/app'
 
 import serverReducer from './reducers/server_reducer'
 import cellsReducer from './reducers/cells_reducer'
@@ -14,6 +14,9 @@ import startReducer from './reducers/start_reducer'
 import exitReducer from './reducers/exit_reducer'
 import widthReducer from './reducers/width_reducer'
 import heightReducer from './reducers/height_reducer'
+import solvedReducer from './reducers/solved_reducer'
+import pathReducer from './reducers/path_reducer'
+import durationReducer from './reducers/duration_reducer'
 
 const reducers = combineReducers({
   server: serverReducer,
@@ -21,7 +24,10 @@ const reducers = combineReducers({
   start: startReducer,
   exit: exitReducer,
   width: widthReducer,
-  height: heightReducer
+  height: heightReducer,
+  solved: solvedReducer,
+  path: pathReducer,
+  duration: durationReducer
 })
 
 const initialState = {
@@ -30,7 +36,10 @@ const initialState = {
   start: false,
   exit: false,
   width: 12,
-  height: 8
+  height: 8,
+  solved: false,
+  path: null,
+  duration: null
 }
 
 const middlewares = applyMiddleware(reduxPromise, logger)
@@ -40,7 +49,7 @@ const store = createStore(reducers, initialState, middlewares)
 
 ReactDOM.render(
   <Provider store={store}>
-    <Maze />
+    <App />
   </Provider>,
     document.getElementById('root')
 )

@@ -1,6 +1,6 @@
-import { CHANGE_START } from '../actions'
 import { RESET } from '../actions'
-import { SET_START } from '../actions'
+import { SOLVED_MAZE } from '../actions'
+import { UNSOLVED_MAZE } from '../actions'
 
 export default function(state, action) {
   if (state === undefined) {
@@ -8,14 +8,14 @@ export default function(state, action) {
   }
 
   switch (action.type) {
-    case CHANGE_START: {
-      return true
+    case SOLVED_MAZE: {
+      return action.payload['calculation_time']
     }
-    case SET_START: {
-      return false
+    case UNSOLVED_MAZE: {
+      return null
     }
     case RESET: {
-      return false
+      return null
     }
     default: {
       return state

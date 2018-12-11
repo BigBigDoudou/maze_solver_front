@@ -1,5 +1,6 @@
-import { SET_WIDTH } from '../actions'
 import { ADD_COLUMN } from '../actions'
+import { RESET } from '../actions'
+import { SET_WIDTH } from '../actions'
 
 export default function(state, action) {
   if (state === undefined) {
@@ -12,6 +13,9 @@ export default function(state, action) {
     }
     case ADD_COLUMN: {
       return state + 1
+    }
+    case RESET: {
+      return 12
     }
     default: {
       return state
