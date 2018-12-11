@@ -1,20 +1,20 @@
-import { SET_WIDTH } from '../actions';
-import { UPDATE_WIDTH } from '../actions';
+import { SET_WIDTH } from '../actions'
+import { ADD_COLUMN } from '../actions'
 
 export default function(state, action) {
   if (state === undefined) {
-    return [];
+    return []
   }
 
   switch (action.type) {
     case SET_WIDTH: {
-      return action.payload;
+      return action.payload
     }
-    case UPDATE_WIDTH: {
-      return action.payload;
+    case ADD_COLUMN: {
+      return state + 1
     }
     default: {
-      return state;
+      return state
     }
   }
 }

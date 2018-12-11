@@ -1,20 +1,20 @@
-import { CHANGE_EXIT } from '../actions';
-import { SET_EXIT } from '../actions';
+import { CHANGE_EXIT } from '../actions'
+import { SET_EXIT } from '../actions'
 
 export default function(state, action) {
   if (state === undefined) {
-    return [];
+    return []
   }
 
   switch (action.type) {
     case CHANGE_EXIT: {
-      return true;
+      return true
     }
     case SET_EXIT: {
-      return false;
+      return false
     }
     default: {
-      return state;
+      return state
     }
   }
 }

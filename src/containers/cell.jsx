@@ -1,36 +1,36 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-import { updateCell } from '../actions';
-import { changeStart } from '../actions';
-import { setStart } from '../actions';
-import { changeExit } from '../actions';
-import { setExit } from '../actions';
+import { updateCell } from '../actions'
+import { changeStart } from '../actions'
+import { setStart } from '../actions'
+import { changeExit } from '../actions'
+import { setExit } from '../actions'
 
 class Cell extends Component {
   cell = () => {
-    return this.props.cells[this.props.y * this.props.width + this.props.x];
+    return this.props.cells[this.props.y * this.props.width + this.props.x]
   }
 
   updateCell = () => {
-    const cell = this.cell();
-    const x = this.props.x, y = this.props.y, width = this.props.width;
+    const cell = this.cell()
+    const x = this.props.x, y = this.props.y, width = this.props.width
     if (this.props.start && cell !== 'E') {
-      this.props.setStart(x, y, width);
+      this.props.setStart(x, y, width)
     } else if (this.props.exit && cell !== 'S') {
-      this.props.setExit(x, y, width);
+      this.props.setExit(x, y, width)
     } else if (cell === 'S') {
-      this.props.changeStart(x, y, width);
+      this.props.changeStart(x, y, width)
     } else if (cell === 'E') {
-      this.props.changeExit(x, y, width);
+      this.props.changeExit(x, y, width)
     } else if (cell === 'W') {
-      this.props.updateCell(x, y, width, 'P');
+      this.props.updateCell(x, y, width, 'P')
     } else if (cell === 'P') {
-      this.props.updateCell(x, y, width, 'W');
+      this.props.updateCell(x, y, width, 'W')
     } else {
       console.log('Something went wrong!')
-    };
+    }
   }
 
   render () {
@@ -41,7 +41,7 @@ class Cell extends Component {
       >
       <div className='path'></div>
       </div>
-    );
+    )
   }
 }
 

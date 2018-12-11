@@ -1,16 +1,16 @@
-import { SERVER_ACTIVATED } from '../actions';
+import { SERVER_ACTIVATED } from '../actions'
 
 export default function(state, action) {
   if (state === undefined) {
-    return [];
+    return []
   }
 
   switch (action.type) {
     case SERVER_ACTIVATED: {
-      return true;
+      return true
     }
     default: {
-      return state;
+      return state
     }
   }
 }
