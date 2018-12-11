@@ -1,5 +1,18 @@
+$dark-green: #56d48f;
+$red: #E15554;
+$purple: #9D8DF1;
+$green: #1CFEBA;
+$blue: #429EA6;
+$gray: #CCC;
+$light-gray: #EEE;
+
+
 body {
   font-family: Helvetica;
+  background-color: $light-gray;
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
 }
 
 #root {
@@ -9,9 +22,46 @@ body {
   justify-content: center;
 }
 
+// SERVER
+
+.server {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.server-icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.server-icon-false {
+  background-color: $red;
+}
+
+.server-icon-true {
+  background-color: $dark-green;
+}
+
+.server-text {
+  height: 12px;
+  font-size: 10px;
+  margin-left: 8px;
+  text-transform: uppercase;
+}
+
+.server-text-true {
+  color: $dark-green;
+}
+
+.server-text-false {
+  color: $red;
+}
+
+// CELL
+
 .cells-container {
   display: grid;
-  grid-template-columns: repeat(10, auto);
   grid-gap: 2px;
 }
 
@@ -19,9 +69,63 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid 1px red;
-  width: 60px;
-  height: 60px;
+  width: auto;
+  height: auto;
+  border: solid 2px transparent;
+  cursor: cell;
+  &:hover {
+    opacity: 0.5;
+    border-color: $red;
+  }
 }
 
 .cell-coordinates {}
+
+.cell-P {
+  background-color: white;
+}
+
+.cell-W {
+  background-color: $gray;
+}
+
+.cell-S {
+  background-color: $purple;
+}
+
+.cell-E {
+  background-color: $green;
+}
+
+.path {
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+}
+
+.cell-X {
+  background-color: white;
+  .path {
+    background-color: $blue;
+  }
+}
+
+// BUTTON
+
+.actions {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.btn {
+  border: none;
+  background-color: $blue;
+  color: white;
+  border-radius: 0;
+  padding: 8px 16px;
+  &:hover {
+    background-color: darken($blue, 10%);
+    color: white;
+  }
+}

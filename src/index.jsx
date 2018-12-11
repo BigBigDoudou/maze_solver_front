@@ -8,23 +8,29 @@ import '../assets/stylesheets/application.scss';
 
 import Maze from './containers/maze';
 
-import serializedReducer from './reducers/serialized_reducer';
+import serverReducer from './reducers/server_reducer';
+import cellsReducer from './reducers/cells_reducer';
+import startReducer from './reducers/start_reducer';
+import exitReducer from './reducers/exit_reducer';
 import widthReducer from './reducers/width_reducer';
 import heightReducer from './reducers/height_reducer';
-import solutionReducer from './reducers/solution_reducer';
 
 const reducers = combineReducers({
-  serialized: serializedReducer,
+  server: serverReducer,
+  cells: cellsReducer,
+  start: startReducer,
+  exit: exitReducer,
   width: widthReducer,
-  height: heightReducer,
-  solution: solutionReducer
+  height: heightReducer
 });
 
 const initialState = {
-  serialized: 'WWWWWWWWWWWSPWWWPWWWWWPWPPPPPWWWPPPWWWEWWWWWWWWWWW',
-  width: 10,
-  height: 10,
-  solution: null
+  server: false,
+  cells: '',
+  start: false,
+  exit: false,
+  width: 24,
+  height: 14
 }
 
 const middlewares = applyMiddleware(reduxPromise, logger);
