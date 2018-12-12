@@ -6,7 +6,7 @@ import { setCells } from '../actions'
 
 class Reset extends Component {
   reset = () => {
-    this.props.setCells(12, 8)
+    this.props.setCells(20, 12)
   }
 
   render () {

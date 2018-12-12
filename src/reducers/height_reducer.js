@@ -15,7 +15,7 @@ export default function(state, action) {
       return state + 1
     }
     case SET_CELLS: {
-      return 8
+      return 12
     }
     default: {
       return state

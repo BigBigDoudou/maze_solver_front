@@ -5,6 +5,7 @@
 @import 'buttons';
 @import 'result';
 @import 'server';
+@import 'header';
 
 body {
   height: 100vh;
@@ -25,8 +26,8 @@ body {
   padding: 0 100px;
 }
 
-#header {
-  height: 5vh;
+#header, #footer {
+  height: 15vh;
 }
 
 #rules {
@@ -34,7 +35,7 @@ body {
 }
 
 #root {
-  height: 95vh;
+  height: 65vh;
 }
 
 #game {
