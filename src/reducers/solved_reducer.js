@@ -9,7 +9,7 @@ export default function(state, action) {
 
   switch (action.type) {
     case SOLVED_MAZE: {
-      return true
+      return action.payload['path_found']
     }
     case UNSOLVED_MAZE: {
       return false
