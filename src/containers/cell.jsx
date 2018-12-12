@@ -36,7 +36,7 @@ class Cell extends Component {
   render () {
     return(
       <div
-        className={`cell cell-${this.cell()}${this.props.start && this.cell() != 'E' ? ' cell-start-free' : ''}${this.props.finish && this.cell() != 'S' ? ' cell-finish-free' : ''}`}
+        className={`cell cell-${this.cell()}${this.props.start && this.cell() != 'F' ? ' cell-start-free' : ''}${this.props.finish && this.cell() != 'S' ? ' cell-finish-free' : ''}`}
         onClick={this.updateCell}
       >
         <div className='path'></div>
