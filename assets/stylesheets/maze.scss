@@ -36,6 +36,7 @@
   outline-offset: -6px;
   &:hover {
     background-color: $purple;
+    cursor: crosshair;
   }
 }
 
@@ -44,5 +45,6 @@
   outline-offset: -6px;
   &:hover {
     background-color: $green;
+    cursor: crosshair;
   }
 }
