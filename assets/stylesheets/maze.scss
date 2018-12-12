@@ -1,0 +1,47 @@
+#maze-container {
+  flex: 3;
+}
+
+#maze {
+  display: grid;
+}
+
+.cell {
+  border: solid 1px $background;
+}
+
+.cell-P {
+  background-color: white;
+}
+
+.cell-W {
+  background-color: $gray;
+}
+
+.cell-S {
+  background-color: $purple;
+}
+
+.cell-F {
+  background-color: $green;
+}
+
+.cell-X {
+  background-color: $red;
+}
+
+.cell-start-free {
+  outline: dashed 3px $purple;
+  outline-offset: -6px;
+  &:hover {
+    background-color: $purple;
+  }
+}
+
+.cell-finish-free {
+  outline: dashed 3px $green;
+  outline-offset: -6px;
+  &:hover {
+    background-color: $green;
+  }
+}

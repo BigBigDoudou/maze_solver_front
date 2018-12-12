@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { reset } from '../actions'
+import { setCells } from '../actions'
 
 class Reset extends Component {
   reset = () => {
-    this.props.reset(12, 8)
+    this.props.setCells(12, 8)
   }
 
   render () {
@@ -24,7 +24,7 @@ class Reset extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { reset },
+    { setCells },
     dispatch
   )
 }

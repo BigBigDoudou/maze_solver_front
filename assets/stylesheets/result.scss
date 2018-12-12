@@ -1,0 +1,19 @@
+#result {
+  padding: 24px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  div {
+    padding: 0 8px;
+    color: $red;
+    font-weight: bold;
+  }
+}

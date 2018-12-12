@@ -7,7 +7,7 @@ export default function(state, action) {
 
   switch (action.type) {
     case SERVER_ACTIVATED: {
-      return true
+      return action.payload['server']
     }
     default: {
       return state

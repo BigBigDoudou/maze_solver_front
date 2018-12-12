@@ -1,6 +1,6 @@
 export const ADD_ROW = 'ADD_ROW'
 export const ADD_COLUMN = 'ADD_COLUMN'
-export const CHANGE_EXIT = 'CHANGE_EXIT'
+export const CHANGE_FINISH = 'CHANGE_FINISH'
 export const CHANGE_START = 'CHANGE_START'
 export const EMPTY = 'EMPTY'
 export const FILL = 'FILL'
@@ -8,7 +8,7 @@ export const RESET = 'RESET'
 export const ROTATE = 'ROTATE'
 export const SERVER_ACTIVATED = 'SERVER_ACTIVATED'
 export const SET_CELLS = 'SET_CELLS'
-export const SET_EXIT = 'SET_EXIT'
+export const SET_FINISH = 'SET_FINISH'
 export const SET_HEIGHT = 'SET_HEIGHT'
 export const SET_START = 'SET_START'
 export const SET_WIDTH = 'SET_WIDTH'
@@ -16,10 +16,10 @@ export const SOLVED_MAZE = 'SOLVED_MAZE'
 export const UNSOLVED_MAZE = 'UNSOLVED_MAZE'
 export const UPDATE_CELL = 'UPDATE_CELL'
 
-export const BASE_URL = 'https://maze-pathfinder.herokuapp.com'
+export const BASE_URL = 'https://tiny-pathfinder.herokuapp.com/mazes'
 
 export function activateServer() {
-  const url = `${BASE_URL}/mazes`
+  const url = `${BASE_URL}/server`
   const promise = fetch(url).then(response => response.json())
 
   return {
@@ -30,14 +30,14 @@ export function activateServer() {
 
 export function setCells(width, height) {
   let cells = ''
-  const middleHeight = Math.round(height / 2) - 1
+  const middleHeight = Math.round(height / 2)
   for (let y = 0; y <= height - 1; y++) {
       for (let x = 0; x <= width - 1; x++) {
         let character = null
-        if ((x === 1) && (y === middleHeight)) {
+        if ((x === 1) && (y === middleHeight - 1)) {
           character = 'S'
         } else if ((x === width - 2) && (y === middleHeight)) {
-          character = 'E'
+          character = 'F'
         } else {
           character = 'W'
         }
@@ -72,23 +72,22 @@ export function setStart(x, y, width) {
   }
 }
 
-export function changeExit(x, y, width) {
+export function changeFinish(x, y, width) {
   return {
-    type: CHANGE_EXIT,
+    type: CHANGE_FINISH,
     payload: y * width + x
   }
 }
 
-export function setExit(x, y, width) {
+export function setFinish(x, y, width) {
   return {
-    type: SET_EXIT,
+    type: SET_FINISH,
     payload: y * width + x
   }
 }
 
 export function solveMaze(maze) {
-  console.log('start path finding')
-  const url = `${BASE_URL}/mazes/find_path`
+  const url = `${BASE_URL}/solve`
   const promise = fetch(url, {
     method: 'POST',
     headers: {
@@ -154,27 +153,5 @@ export function unsolveMaze(cells) {
   return {
     type: UNSOLVED_MAZE,
     payload: cells.replace(/X/g, 'P')
-  }
-}
-
-export function reset(width, height) {
-  let cells = ''
-  const middleHeight = Math.round(height / 2)
-  for (let y = 0; y <= height - 1; y++) {
-    for (let x = 0; x <= width - 1; x++) {
-      let character = null
-      if ((x === 1) && (y === middleHeight)) {
-        character = 'S'
-      } else if ((x === width - 2) && (y === middleHeight)) {
-        character = 'E'
-      } else {
-        character = 'W'
-      }
-      cells += character
-    }
-  }
-  return {
-    type: RESET,
-    payload: cells
   }
 }

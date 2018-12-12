@@ -1,5 +1,5 @@
 import { CHANGE_START } from '../actions'
-import { RESET } from '../actions'
+import { SET_CELLS } from '../actions'
 import { SET_START } from '../actions'
 
 export default function(state, action) {
@@ -14,7 +14,7 @@ export default function(state, action) {
     case SET_START: {
       return false
     }
-    case RESET: {
+    case SET_CELLS: {
       return false
     }
     default: {

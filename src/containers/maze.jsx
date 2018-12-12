@@ -16,15 +16,26 @@ class Maze extends Component {
   }
 
   gridSize = () => {
-    return 800 / Math.max(this.props.width, this.props.height * 1.6)
+    const rootElt = document.getElementById('root')
+    const verticalSpace = rootElt.offsetHeight - 40
+    console.log(verticalSpace)
+    const horizontalSpace = rootElt.offsetWidth * 3 / 4
+    const maxCellHeight = verticalSpace / this.props.height
+    const maxCellWidth = horizontalSpace / this.props.width
+    return Math.min(maxCellHeight, maxCellWidth)
   }
+
 
   render () {
     return(
-      <div id='maze'
-           style={{ gridTemplateColumns: `repeat(${this.props.width}, ${this.gridSize()}px)`,
-                    gridTemplateRows: `repeat(${this.props.height}, ${this.gridSize()}px)` }}
-      >{this.cellsList()}</div>
+      <div id='maze-container'>
+        <div id='maze'
+             style={{ gridTemplateColumns: `repeat(${this.props.width}, ${this.gridSize()}px`,
+                      gridTemplateRows: `repeat(${this.props.height}, ${this.gridSize()}px` }}
+        >
+          {this.cellsList()}
+        </div>
+      </div>
     )
   }
 }

@@ -1,0 +1,42 @@
+#rules {
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  p {
+    font-size: 16px;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.white, .red, .blue, .green, .gray, .purple {
+  font-weight: bold;
+}
+
+.white {
+  color: white;
+}
+
+.red {
+  color: $red;
+}
+
+.blue {
+  color: $blue;
+}
+
+.green {
+  color: $green;
+}
+
+.gray {
+  color: $gray;
+}
+
+.purple {
+  color: $purple;
+}

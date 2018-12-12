@@ -1,6 +1,6 @@
-import { CHANGE_EXIT } from '../actions'
-import { RESET } from '../actions'
-import { SET_EXIT } from '../actions'
+import { CHANGE_FINISH } from '../actions'
+import { SET_CELLS } from '../actions'
+import { SET_FINISH } from '../actions'
 
 export default function(state, action) {
   if (state === undefined) {
@@ -8,13 +8,13 @@ export default function(state, action) {
   }
 
   switch (action.type) {
-    case CHANGE_EXIT: {
+    case CHANGE_FINISH: {
       return true
     }
-    case SET_EXIT: {
+    case SET_FINISH: {
       return false
     }
-    case RESET: {
+    case SET_CELLS: {
       return false
     }
     default: {

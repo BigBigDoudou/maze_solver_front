@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 class Server extends Component {
   render () {
     return(
-      <div className='server'>
+      <div id='server'>
         <div className={`server-icon server-icon-${this.props.server ? 'true' : 'false'}`}></div>
         <p className={`server-text server-text-${this.props.server ? 'true' : 'false'}`}>
           {this.props.server ? 'connected to server' : 'waiting for server response'}

@@ -6,7 +6,7 @@ import { addRow } from '../actions'
 
 class AddRow extends Component {
   addRow = () => {
-    if (this.props.height < 20) {
+    if (this.props.height < 30) {
       this.props.addRow(this.props.width)
     }
   }
@@ -14,11 +14,11 @@ class AddRow extends Component {
   render () {
     return(
       <button
-        className={`btn btn-row${this.props.height >= 20 ? ' btn-disabled' : ''}`}
+        className={`btn btn-row${this.props.height >= 30 ? ' btn-disabled' : ''}`}
         onClick={this.addRow}
       >
         +1 row
-        <p className="btn-helper">{this.props.height >= 20 ? "You can't add more rows" : 'Add a row to the maze'}</p>
+        <p className="btn-helper">{this.props.height >= 30 ? "You can't add more rows" : 'Add a row to the maze'}</p>
       </button>
     )
   }

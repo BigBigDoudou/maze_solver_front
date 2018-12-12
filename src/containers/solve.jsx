@@ -7,7 +7,7 @@ import { solveMaze } from '../actions'
 class Solve extends Component {
   solveMaze = () => {
     this.props.solveMaze(
-      { serialized: this.props.cells,
+      { serial: this.props.cells,
         width: this.props.width }
     )
   }

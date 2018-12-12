@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { updateCell } from '../actions'
 import { changeStart } from '../actions'
 import { setStart } from '../actions'
-import { changeExit } from '../actions'
-import { setExit } from '../actions'
+import { changeFinish } from '../actions'
+import { setFinish } from '../actions'
 
 class Cell extends Component {
   cell = () => {
@@ -16,14 +16,14 @@ class Cell extends Component {
   updateCell = () => {
     const cell = this.cell()
     const x = this.props.x, y = this.props.y, width = this.props.width
-    if (this.props.start && cell != 'E') {
+    if (this.props.start && cell != 'F') {
       this.props.setStart(x, y, width)
-    } else if (this.props.exit && cell != 'S') {
-      this.props.setExit(x, y, width)
-    } else if (cell === 'S' && !this.props.exit) {
+    } else if (this.props.finish && cell != 'S') {
+      this.props.setFinish(x, y, width)
+    } else if (cell === 'S' && !this.props.finish) {
       this.props.changeStart(x, y, width)
-    } else if (cell === 'E' && !this.props.start) {
-      this.props.changeExit(x, y, width)
+    } else if (cell === 'F' && !this.props.start) {
+      this.props.changeFinish(x, y, width)
     } else if (cell === 'W') {
       this.props.updateCell(x, y, width, 'P')
     } else if (cell === 'P') {
@@ -36,7 +36,7 @@ class Cell extends Component {
   render () {
     return(
       <div
-        className={`cell cell-${this.cell()}${this.props.start && this.cell() != 'E' ? ' cell-start-free' : ''}${this.props.exit && this.cell() != 'S' ? ' cell-exit-free' : ''}`}
+        className={`cell cell-${this.cell()}${this.props.start && this.cell() != 'E' ? ' cell-start-free' : ''}${this.props.finish && this.cell() != 'S' ? ' cell-finish-free' : ''}`}
         onClick={this.updateCell}
       >
         <div className='path'></div>
@@ -47,7 +47,7 @@ class Cell extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { updateCell, changeStart, setStart, changeExit, setExit },
+    { updateCell, changeStart, setStart, changeFinish, setFinish },
     dispatch
   )
 }
@@ -57,7 +57,7 @@ const mapStateToProps = (state) => {
     cells: state.cells,
     width: state.width,
     start: state.start,
-    exit: state.exit
+    finish: state.finish
   }
 }
 

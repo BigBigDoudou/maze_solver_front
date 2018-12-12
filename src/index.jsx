@@ -11,7 +11,7 @@ import App from './containers/app'
 import serverReducer from './reducers/server_reducer'
 import cellsReducer from './reducers/cells_reducer'
 import startReducer from './reducers/start_reducer'
-import exitReducer from './reducers/exit_reducer'
+import finishReducer from './reducers/finish_reducer'
 import widthReducer from './reducers/width_reducer'
 import heightReducer from './reducers/height_reducer'
 import solvedReducer from './reducers/solved_reducer'
@@ -22,7 +22,7 @@ const reducers = combineReducers({
   server: serverReducer,
   cells: cellsReducer,
   start: startReducer,
-  exit: exitReducer,
+  finish: finishReducer,
   width: widthReducer,
   height: heightReducer,
   solved: solvedReducer,
@@ -34,9 +34,9 @@ const initialState = {
   server: false,
   cells: '',
   start: false,
-  exit: false,
-  width: 13,
-  height: 9,
+  finish: false,
+  width: 12,
+  height: 8,
   solved: false,
   path: null,
   duration: null

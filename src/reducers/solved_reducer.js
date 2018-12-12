@@ -1,6 +1,6 @@
+import { SET_CELLS } from '../actions'
 import { SOLVED_MAZE } from '../actions'
 import { UNSOLVED_MAZE } from '../actions'
-import { RESET } from '../actions'
 
 export default function(state, action) {
   if (state === undefined) {
@@ -14,7 +14,7 @@ export default function(state, action) {
     case UNSOLVED_MAZE: {
       return false
     }
-    case RESET: {
+    case SET_CELLS: {
       return false
     }
     default: {

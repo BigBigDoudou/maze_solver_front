@@ -1,14 +1,13 @@
 import { ADD_COLUMN } from '../actions'
 import { ADD_ROW } from '../actions'
-import { CHANGE_EXIT } from '../actions'
+import { CHANGE_FINISH } from '../actions'
 import { CHANGE_START } from '../actions'
 import { EMPTY } from '../actions'
 import { FILL } from '../actions'
-import { RESET } from '../actions'
 import { ROTATE } from '../actions'
 import { SET_CELLS } from '../actions'
 import { SET_START } from '../actions'
-import { SET_EXIT } from '../actions'
+import { SET_FINISH } from '../actions'
 import { SOLVED_MAZE } from '../actions'
 import { UNSOLVED_MAZE } from '../actions'
 import { UPDATE_CELL } from '../actions'
@@ -20,9 +19,6 @@ export default function(state, action) {
 
   switch (action.type) {
     case SET_CELLS: {
-      return action.payload
-    }
-    case RESET: {
       return action.payload
     }
     case UPDATE_CELL: {
@@ -46,17 +42,17 @@ export default function(state, action) {
         ...state.slice(action.payload + 1)
       ].join('')
     }
-    case CHANGE_EXIT: {
+    case CHANGE_FINISH: {
       return [
         ...state.slice(0, action.payload),
         'P',
         ...state.slice(action.payload + 1)
       ].join('')
     }
-    case SET_EXIT: {
+    case SET_FINISH: {
       return [
         ...state.slice(0, action.payload),
-        'E',
+        'F',
         ...state.slice(action.payload + 1)
       ].join('')
     }
@@ -76,8 +72,7 @@ export default function(state, action) {
       return action.payload
     }
     case SOLVED_MAZE: {
-      console.log('solution found')
-      const path = action.payload['path_found'] ? action.payload['path'] : state
+      const path = action.payload['path_found'] ? action.payload['path_serialized'] : state
       return path
     }
     case UNSOLVED_MAZE: {

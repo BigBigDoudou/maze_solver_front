@@ -1,5 +1,5 @@
 import { ADD_ROW } from '../actions'
-import { RESET } from '../actions'
+import { SET_CELLS } from '../actions'
 import { SET_HEIGHT } from '../actions'
 
 export default function(state, action) {
@@ -14,7 +14,7 @@ export default function(state, action) {
     case ADD_ROW: {
       return state + 1
     }
-    case RESET: {
+    case SET_CELLS: {
       return 8
     }
     default: {
