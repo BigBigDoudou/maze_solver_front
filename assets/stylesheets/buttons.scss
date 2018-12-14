@@ -50,9 +50,7 @@
 
 .btn-column,
 .btn-row,
-.btn-rotate,
-.btn-fill,
-.btn-empty {
+.btn-action {
   background-color: $blue;
   &:hover {
     background-color: darken($blue, 5%);

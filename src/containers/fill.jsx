@@ -12,7 +12,7 @@ class Fill extends Component {
   render () {
     return(
       <button
-        className='btn btn-fill'
+        className='btn btn-action'
         onClick={this.fill}
       >
         fill

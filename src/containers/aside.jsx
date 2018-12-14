@@ -6,6 +6,7 @@ import AddColumn from './add_column'
 import AddRow from './add_row'
 import Empty from './empty'
 import Fill from './fill'
+import Randomize from './randomize'
 import Reset from './reset'
 import Result from './result'
 import Rotate from './rotate'
@@ -20,6 +21,7 @@ class Aside extends Component {
         <div id='buttons'>
           <AddColumn />
           <AddRow />
+          <Randomize />
           <Empty />
           <Fill />
           <Rotate />

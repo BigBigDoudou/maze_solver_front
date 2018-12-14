@@ -12,7 +12,7 @@ class Rotate extends Component {
   render () {
     return(
       <button
-        className='btn btn-rotate'
+        className='btn btn-action'
         onClick={this.rotate}
       >
         rotate

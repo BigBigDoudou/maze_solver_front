@@ -4,6 +4,7 @@ import { CHANGE_FINISH } from '../actions'
 import { CHANGE_START } from '../actions'
 import { EMPTY } from '../actions'
 import { FILL } from '../actions'
+import { RANDOMIZE } from '../actions'
 import { ROTATE } from '../actions'
 import { SET_CELLS } from '../actions'
 import { SET_START } from '../actions'
@@ -69,6 +70,9 @@ export default function(state, action) {
       return action.payload
     }
     case EMPTY: {
+      return action.payload
+    }
+    case RANDOMIZE: {
       return action.payload
     }
     case SOLVED_MAZE: {

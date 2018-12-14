@@ -12,7 +12,7 @@ class Empty extends Component {
   render () {
     return(
       <button
-        className='btn btn-empty'
+        className='btn btn-action'
         onClick={this.empty}
       >
         empty

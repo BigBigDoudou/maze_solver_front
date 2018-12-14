@@ -4,6 +4,7 @@ export const CHANGE_FINISH = 'CHANGE_FINISH'
 export const CHANGE_START = 'CHANGE_START'
 export const EMPTY = 'EMPTY'
 export const FILL = 'FILL'
+export const RANDOMIZE = 'RANDOMIZE'
 export const RESET = 'RESET'
 export const ROTATE = 'ROTATE'
 export const SERVER_ACTIVATED = 'SERVER_ACTIVATED'
@@ -46,6 +47,31 @@ export function setCells(width, height) {
     }
   return {
     type: SET_CELLS,
+    payload: cells
+  }
+}
+
+export function randomize(width, height, start, finish) {
+  let cells = ''
+  const start_x = start % width
+  const start_y = (start - start_x) / width
+  const finish_x = finish % width
+  const finish_y = (finish - finish_x) / width
+  for (let y = 0; y <= height - 1; y++) {
+      for (let x = 0; x <= width - 1; x++) {
+        let character = null
+        if ((x === start_x) && (y === start_y)) {
+          character = 'S'
+        } else if ((x === finish_x) && (y === finish_y)) {
+          character = 'F'
+        } else {
+          character = ['W', 'P'][Math.floor(Math.random() * 2)]
+        }
+        cells += character
+      }
+    }
+  return {
+    type: RANDOMIZE,
     payload: cells
   }
 }
